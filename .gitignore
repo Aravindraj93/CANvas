@@ -45,3 +45,6 @@ Thumbs.db
 
 # Local source archives
 /CANvas*_src.zip
+
+.venv-preview/
+.preview/

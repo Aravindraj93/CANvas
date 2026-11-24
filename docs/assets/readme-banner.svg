@@ -1,0 +1,10 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="360" viewBox="0 0 1280 360">
+<defs><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#0b1423"/><stop offset="1" stop-color="#102c39"/></linearGradient><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#294454" stroke-opacity=".35"/></pattern></defs>
+<rect width="1280" height="360" rx="22" fill="url(#bg)"/><rect width="1280" height="360" rx="22" fill="url(#grid)"/>
+<rect x="64" y="52" width="191" height="28" rx="14" fill="#173d3c"/><text x="81" y="71" fill="#72e6ba" font-family="Segoe UI,Arial,sans-serif" font-size="12" letter-spacing="2">OPEN SOURCE · MIT</text>
+<text x="60" y="177" font-family="Segoe UI,Arial,sans-serif" font-weight="700" font-size="89" fill="#f2f7fc">CAN<tspan fill="#66e0bc">vas</tspan></text>
+<text x="65" y="224" fill="#d5e3ed" font-family="Segoe UI,Arial,sans-serif" font-size="25">Your signals. Your bench. Your workflow.</text>
+<text x="65" y="283" fill="#92adbd" font-family="Segoe UI,Arial,sans-serif" font-size="17">DBC SIGNAL STUDIO  /  CAN + CAN FD  /  YAML AUTOMATION</text>
+<g fill="none" stroke="#5de0b4" stroke-width="4" stroke-linejoin="round"><path d="M823 178h47v-47h49v94h49v-94h49v47h52"/><path d="M824 261h72v-25h63v25h59v-60h50" stroke="#6b9fd9" stroke-width="3"/></g>
+<g fill="#102632" stroke="#5de0b4" stroke-width="2"><circle cx="814" cy="178" r="9"/><circle cx="1078" cy="178" r="9"/><circle cx="814" cy="261" r="7"/><circle cx="1078" cy="201" r="7"/></g>
+<text x="821" y="103" fill="#92adbd" font-family="monospace" font-size="15">0x100  ·  SIGNAL → FRAME</text></svg>

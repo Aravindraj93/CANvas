@@ -1,28 +1,107 @@
-﻿# CANvas
+<p align="center">
+  <img src="docs/assets/readme-banner.svg" alt="CANvas — Your signals. Your bench. Your workflow." width="100%">
+</p>
 
-**Explore DBC signals. Control CAN traffic. Automate HMI bench checks.**
+<h1 align="center">CAN &amp; CAN FD bench testing, made approachable.</h1>
 
-[![CI](https://github.com/Aravindraj93/CANvas/actions/workflows/ci.yml/badge.svg)](https://github.com/Aravindraj93/CANvas/actions/workflows/ci.yml)
-[![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-[![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](pyproject.toml)
-[![Status: Alpha](https://img.shields.io/badge/status-alpha-orange.svg)](RELEASE_CHECKLIST.md)
+<p align="center">
+  Explore DBC signals. Control live traffic. Turn repeatable HMI checks into code.<br>
+  <strong>A native desktop workspace, a local browser UI, and a scriptable CLI.</strong>
+</p>
 
-CANvas is an open-source CAN/CAN FD signal and HMI bench-testing tool for automotive developers and test engineers. Load your DBCs, send meaningful signal values, inspect live traffic, and turn repeatable checks into YAML scenarios with HTML reports.
+<p align="center">
+  <a href="https://github.com/Aravindraj93/CANvas/actions/workflows/ci.yml"><img src="https://github.com/Aravindraj93/CANvas/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-65dcb2" alt="MIT license"></a>
+  <a href="pyproject.toml"><img src="https://img.shields.io/badge/python-3.10%2B-6b9fd9" alt="Python 3.10 or later"></a>
+  <a href="RELEASE_CHECKLIST.md"><img src="https://img.shields.io/badge/v0.4.6-alpha-f0bd69" alt="Version 0.4.6 alpha"></a>
+</p>
 
-Start with a virtual CAN bus, then configure a supported adapter for your development bench. The native Qt desktop app is the primary interface; a local browser UI and CLI are also included.
+<p align="center">
+  <a href="#get-started"><strong>Get started</strong></a> ·
+  <a href="#see-it-in-action"><strong>See the app</strong></a> ·
+  <a href="docs/writing-tests.md">Write scenarios</a> ·
+  <a href="BENCH_SETUP.md">Connect your bench</a> ·
+  <a href="CONTRIBUTING.md">Contribute</a>
+</p>
 
-[Get started](#get-started) · [Write scenarios](docs/writing-tests.md) · [Bench setup](BENCH_SETUP.md) · [Contribute](CONTRIBUTING.md) · [Report a bug](https://github.com/Aravindraj93/CANvas/issues/new/choose)
+---
 
-## What you can do
+## From a DBC file to a repeatable bench workflow
 
-- **Work with DBCs:** save multiple databases, organize programs, search messages and signals, and use named choices instead of raw numbers.
-- **Control signals:** edit physical values, send whole messages, run cyclic transmissions, and reuse favorites and signal notes.
-- **See what was sent:** inspect session signal history, encoded TX values, counts, and active cycles alongside the bus monitor.
-- **Automate checks:** write YAML for signal sends, waits, received-signal assertions, and visual comparisons against prepared baselines.
-- **Review results:** generate HTML reports with verdicts, step details, and durations.
-- **Draft scenarios with optional AI:** use Gemini when configured or local templates otherwise. Review generated YAML before execution.
+CANvas helps automotive developers and test engineers work with meaningful signal values instead of manually assembling payload bytes. Bring your DBCs, organize a program, send signals, inspect traffic, and automate checks with readable YAML and HTML results.
 
-**Status: 0.4.6 alpha, desktop-first.** Hardware qualification and clean-machine executable checks remain open. CANvas is intended for authorized, isolated development benches; it is not safety-certified or hard-real-time. See the [release checklist](RELEASE_CHECKLIST.md).
+**Start without hardware.** Explore with a virtual CAN bus and the included synthetic DBC, then configure an adapter for your isolated development bench.
+
+## See it in action
+
+<p align="center">
+  <img src="docs/assets/signal-studio.png" alt="Actual CANvas native desktop Signal Studio showing the included synthetic DBC, message browser, signal values, and transmission controls" width="100%">
+</p>
+
+<p align="center"><sub>Native desktop Signal Studio · Included synthetic sample DBC · Virtual CAN demonstration</sub></p>
+
+## Built for the work on your bench
+
+<table>
+<tr>
+<td width="50%" valign="top">
+
+### 🗂️ DBC Signal Studio
+
+Browse messages and signals side by side. Search names and CAN IDs, edit physical values, and use named choices where the DBC defines them. Load multiple databases and organize them by program.
+
+</td>
+<td width="50%" valign="top">
+
+### 🎛️ Manual & cyclic control
+
+Send a signal or a message, adjust values with numeric controls, and repeat full CAN messages at a chosen interval. Keep your frequent signals close with favorites and per-program notes.
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+### 📡 Traffic & session visibility
+
+Monitor CAN traffic and inspect successfully transmitted session signals, encoded values, TX counts, and cycle status. Keep draft edits separate from the last transmitted value.
+
+</td>
+<td valign="top">
+
+### 🧪 Readable test automation
+
+Write YAML scenarios for sends, waits, fresh received-signal assertions, and visual comparisons with prepared baselines. Run from the desktop, browser, or CLI and cancel execution when needed.
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+### 📋 Results you can review
+
+Generate HTML reports with verdicts, step details, and durations. Distinguish PASS, FAIL, ERROR, INCOMPLETE, and CANCELLED. Scenarios without verification do not get a passing verdict.
+
+</td>
+<td valign="top">
+
+### ✨ Optional AI assistance
+
+Draft YAML with Gemini when configured, or use local templates without a key. Review every generated scenario before running it. Gemini use discloses prompts and DBC-derived metadata to Google.
+
+</td>
+</tr>
+</table>
+
+### One workflow, four steps
+
+| 01 · Load | 02 · Control | 03 · Observe | 04 · Automate |
+| --- | --- | --- | --- |
+| Add DBCs and select a program | Send physical values or start cycles | Inspect traffic and session TX history | Run YAML checks and review HTML results |
+
+> **0.4.6 alpha · Desktop-first.** Hardware qualification and clean-machine executable checks remain open. Use authorized, isolated development benches. CANvas is not safety-certified or hard-real-time. See the [release checklist](RELEASE_CHECKLIST.md).
+
+---
 
 ## Get started
 
