@@ -1,0 +1,65 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "canvas-hmi"
+version = "0.4.6"
+description = "Open-source CAN/CAN FD bench signal and HMI testing tools"
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.10"
+keywords = ["automotive", "CAN", "HMI", "testing", "canoe", "canalyzer", "CAPL", "DBC"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Developers",
+  "Topic :: Software Development :: Testing",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+]
+dependencies = [
+  "fastapi>=0.115.0",
+  "uvicorn[standard]>=0.32.0",
+  "python-can>=4.4.0",
+  "cantools>=39.0.0",
+  "python-multipart>=0.0.12",
+  "websockets>=13.0",
+  "pillow>=10.0.0",
+  "mss>=9.0.0",
+  "opencv-python-headless>=4.10.0",
+  "numpy>=1.26.0",
+  "jinja2>=3.1.0",
+  "pyyaml>=6.0.0",
+  "click>=8.1.0",
+  "rich>=13.0.0",
+  "httpx>=0.27.0",
+]
+
+[project.optional-dependencies]
+desktop = ["PySide6-Essentials>=6.6"]
+build = ["pyinstaller>=6.0"]
+valuecan = ["python-can[neovi]>=4.4.0"]
+ai = ["google-genai>=1.0.0"]
+dev = ["pytest>=8.0", "pytest-asyncio>=0.24", "httpx>=0.27", "ruff>=0.6"]
+
+[project.scripts]
+canvas = "backend.main:cli"
+canvas-desktop = "backend.desktop.launcher:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["backend"]
+
+[tool.hatch.build.hooks.custom]
+path = "hatch_build.py"
+
+[tool.hatch.build.targets.sdist]
+include = ["/backend", "/frontend", "/tests", "/examples", "/docs", "/*.md", "/*.toml", "/*.py", "/*.bat", "/*.txt", "/LICENSE"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+testpaths = ["tests"]

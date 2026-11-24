@@ -1,0 +1,122 @@
+CANvas 0.4.6 - Windows desktop update
+==================================
+
+1. Close the previous CANvas web server / desktop application.
+2. Extract this ZIP into a new folder (do not run it inside the ZIP).
+3. Double-click Setup_CANvas.bat once. Python 3.10+ is required.
+4. Double-click Start_CANvas.bat to open the native desktop window.
+5. Choose Intrepid ValueCAN / neoVI and enter your working bench settings.
+
+Keep your existing Intrepid Product Drivers installed.
+
+Side-by-side Signal Studio
+--------------------------
+- Messages are on the left and signals for the selected message are on the right.
+- Drag the divider to resize the panes. Click DBC Library to hide or restore it.
+- Messages show the CAN ID and DBC under the name. Use Details or hover over a
+  message to see traffic status and frame counts.
+- Signal notes appear in mint green with a Note label. Hover for the full text.
+
+Signal notes and shared favorites
+---------------------------------
+1. Select a program and a message. Click the signal name, then Signal note.
+2. Enter when to use the signal, its expected value or the test it supports.
+   The note appears under the signal name. Hover to read the full note.
+   Select Signal note again to edit it. Clear the text to remove it.
+3. Star the signals you want to share, then click Export favorites in the
+   program toolbar. Send the resulting JSON file to your teammate.
+4. The recipient adds the same versions of the referenced DBCs, selects or
+   creates a program, and clicks Import favorites. Enable those DBCs in their
+   program if needed. Favorites only shows the resulting list.
+
+An export covers favorites for the selected program, including favorite
+messages and notes on signals within those messages. It contains references
+and notes. The recipient supplies the DBCs separately. Matching uses DBC
+contents, so renamed copies of the same file are accepted. Import adds
+favorites and fills empty notes. If a local note differs, CANvas keeps it
+and reports how many local notes it kept. Review notes before sharing.
+
+Cyclic sending and diagnostics
+---------------------------
+- Cyclic transmission schedules each frame against the requested interval.
+- Signal Studio keeps the chosen cycle time for each message as you navigate.
+- The footer shows how many cyclic messages are active.
+- Save diagnostics includes recent encoded payloads, CAN IDs, channel, FD/BRS,
+  host timestamps, send results and adapter call duration. Manual edits are
+  linked by request ID. The history keeps up to 200 single and 300 cyclic sends.
+
+Compare with Vehicle Spy
+------------------------
+1. Check the working message's Auto Tx mode, Rate, CAN network and FD/BRS in
+   Vehicle Spy. Stop its transmission of the same CAN ID during the CANvas test.
+2. Use the same connection settings and message in CANvas. If Vehicle Spy uses
+   periodic transmission, set Cycle to the equivalent interval in milliseconds
+   and click Start cyclic. Start once per message, then change each signal.
+3. If a value fails to reflect, immediately click Save diagnostics. Keep a
+   short Vehicle Spy trace of the working sequence for comparison if available.
+
+Diagnostic TX timestamps describe host send attempts. Compare on-bus timing,
+payloads and competing frames using a separate bench capture.
+
+Retained DBC loading fixes
+-------------------------
+- One failed saved DBC no longer hides all other messages on startup.
+- Loading errors remain visible above the list with the failing filename.
+- Reload DBCs retries saved enabled files without deleting programs or favorites.
+- Save diagnostics includes DBC loading state, errors and search filters.
+- Read DBC_LOADING_FIX.md for the recovery steps.
+
+Retained search and control fixes
+--------------------------------
+- Search keeps focus/caret/selection while results refresh.
+- Search ignores case/spaces/separators and falls back to small spelling mistakes.
+- Favorites-only filter is a bordered on/off button.
+- CAN FD is a visible top-level checkbox, checked by default.
+- Read UI_SEARCH_AND_RX.md for this patch and explanations of YAML Tests / RX.
+
+Retained from 0.4
+-----------------
+- DBCs sharing a CAN ID can be active together; TX uses the selected source row.
+- Enable all / Use selected activate several saved files at once.
+- CAN FD checkbox stays beside Connect/Disconnect; use Apply & reconnect.
+- Successful connection settings restore on the next launch without reconnecting.
+- Favorite controls are bordered Add / Saved buttons.
+- Last action shows each send result; Save diagnostics captures repeated sends.
+- Cleaner layout, expandable connection settings and optional raw/range details.
+- Faster signal search with cached metadata, short debounce and limited rendering.
+- Enter sends the edited signal; each - / + click sends that value immediately.
+- User text-choice selection sends immediately. Typing alone does not send.
+- CAN FD messages show a setup action before transmitting on a Classical CAN bus.
+- Zero-scale DBC fields load as read-only constants; raw initial bits are preserved.
+
+Read DESKTOP_UPDATE.md for details and CAN FD recovery steps.
+
+Included features
+-----------------
+- Add multiple DBC files and restore them automatically after restarting.
+- Create or select programs/apps, each with its own favorites and active DBCs.
+- Favorite messages or individual signals and filter to favorites.
+- Select DBC text values such as ACC, RUN, START and SNA from dropdowns.
+- Inspect TX, adapter TX echoes, RX, age, stale traffic and encoding/send errors.
+- Verify expected signal values against the latest fresh received CAN frame.
+- Correct invalid companion-signal initial values, including MAP_4_BAR=511
+  when the ordinary DBC maximum is 408. Explicitly defined SNA choices remain
+  available. Notes show any corrected initial value.
+
+Saved DBCs/programs/favorites use %USERPROFILE%\.canvas by default; they survive
+extracting a newer release to another folder. Back up that directory with CANvas
+closed if you want a copy of your saved setup.
+
+Read DESKTOP_AND_PROGRAMS.md for full instructions and verification semantics.
+Build_Windows_EXE.bat builds dist\CANvas\CANvas.exe on Windows. Copy the entire
+dist\CANvas folder when distributing that build.
+
+Validation for this package
+---------------------------
+75 automated tests passed, including native Qt interaction tests in Linux
+offscreen mode; the TypeScript/Vite production build passed.
+
+This package contains source and Windows launch/build scripts, not a prebuilt
+Windows .exe. Windows installation/executable packaging and physical bench
+validation of this release are still required on your Windows computer.
+RX verification checks CAN traffic; it cannot by itself confirm HMI acceptance.

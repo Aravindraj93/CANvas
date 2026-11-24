@@ -1,0 +1,7 @@
+﻿name: Virtual smoke demonstration
+bus: virtual
+steps:
+  - action: log
+    message: No hardware is used by this scenario.
+  - action: wait
+    ms: 100

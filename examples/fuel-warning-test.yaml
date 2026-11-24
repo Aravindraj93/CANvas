@@ -1,0 +1,41 @@
+name: "Fuel Warning Test"
+description: "Verify the low-fuel warning activates when FuelLevel drops below 10%"
+bus: virtual
+steps:
+  - action: send_signal
+    message: BodyControl
+    signal: FuelLevel
+    value: 80.0
+    description: "Set initial fuel level to 80%"
+
+  - action: wait
+    ms: 300
+    description: "Allow HMI to update display"
+
+  - action: send_signal
+    message: BodyControl
+    signal: FuelLevel
+    value: 15.0
+    description: "Drop fuel to 15% (approaching low)"
+
+  - action: wait
+    ms: 200
+
+  - action: send_signal
+    message: BodyControl
+    signal: FuelLevel
+    value: 5.0
+    description: "Critical fuel level — warning should activate"
+
+  - action: wait
+    ms: 500
+    description: "Wait for HMI reaction"
+
+  - action: assert_signal
+    message: BodyControl
+    signal: WarningLamp
+    expected: 1.0
+    description: "WarningLamp should be active (1)"
+
+  - action: log
+    message: "Fuel warning test complete"

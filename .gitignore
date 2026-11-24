@@ -1,0 +1,47 @@
+# Environments and Python caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+*.egg-info/
+
+# Build products (keep frontend/package-lock.json)
+node_modules/
+dist/
+build/
+frontend/dist/
+*.tsbuildinfo
+*.spec
+
+# Local configuration, private engineering data and test evidence
+.env
+.env.*
+!.env.example
+.canvas/
+workspace.sqlite3*
+reports/
+baselines/
+screenshots/
+diagnostics/
+canvas-report.html
+CANvas-diagnostics*.json
+*.asc
+*.blf
+*.mf4
+*.dbc
+!tests/fixtures/*.dbc
+!examples/*.dbc
+
+# Editors and OS files
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+
+# Local source archives
+/CANvas*_src.zip
